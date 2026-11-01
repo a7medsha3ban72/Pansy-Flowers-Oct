@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>تقرير أداء — أزهار بانسيه | أكتوبر 2026</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { overflow-x: hidden; max-width: 100%; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Tahoma', Arial, sans-serif; line-height: 1.7; color: #1a1a1a; background: #f8fafc; direction: rtl; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 24px 14px; width: 100%; }
+
+        .header { background: linear-gradient(135deg, #4a0e27 0%, #8b1249 55%, #c2185b 100%); color: white; padding: 36px 20px; border-radius: 16px; margin-bottom: 24px; text-align: center; position: relative; overflow: hidden; }
+        .header::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(ellipse at center, rgba(255,255,255,0.04) 0%, transparent 60%); }
+        .header .brand { font-size: 36px; font-weight: 900; color: #fff; margin-bottom: 6px; position: relative; letter-spacing: 1px; }
+        .header .brand span { color: #f4c95d; }
+        .header h1 { font-size: 16px; font-weight: 500; opacity: 0.75; margin-bottom: 6px; position: relative; }
+        .header .date { font-size: 13px; opacity: 0.5; position: relative; }
+        .accent-bar { height: 4px; width: 80px; background: #f4c95d; margin: 12px auto; border-radius: 2px; }
+        .platform-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.12); border-radius: 24px; padding: 8px 16px; font-size: 13px; font-weight: 700; margin-top: 12px; position: relative; flex-wrap: wrap; justify-content: center; }
+
+        .section { background: white; border-radius: 12px; padding: 20px 16px; margin-bottom: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); overflow: hidden; }
+        .section-title { font-size: 18px; font-weight: 700; color: #1a1a1a; margin-bottom: 18px; border-right: 5px solid #e53935; padding-right: 12px; }
+
+        .metrics-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 20px; }
+        @media (min-width: 600px) { .metrics-grid { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); } }
+        .metric-card { padding: 16px; border-radius: 10px; border: 2px solid #e2e8f0; }
+        .metric-card.dark { background: linear-gradient(135deg, #0a0a0a, #2d2d2d); color: white; border: none; }
+        .metric-card.red { background: linear-gradient(135deg, #e53935, #b71c1c); color: white; border: none; }
+        .metric-card.green { background: linear-gradient(135deg, #1b5e20, #2e7d32); color: white; border: none; }
+        .metric-card.blue { background: linear-gradient(135deg, #1565c0, #0d47a1); color: white; border: none; }
+        .metric-card.muted { background: #f1f5f9; }
+        .metric-card.gold { background: linear-gradient(135deg, #f57f17, #e65100); color: white; border: none; }
+        .metric-card.tiktok { background: linear-gradient(135deg, #010101, #2d2d2d); color: white; border: none; }
+        .metric-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; opacity: 0.75; margin-bottom: 4px; }
+        .metric-value { font-size: 22px; font-weight: 700; line-height: 1.1; }
+        .metric-sub { font-size: 11px; opacity: 0.7; margin-top: 4px; }
+
+        /* COMPARISON TABLE */
+        .cmp-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 10px; }
+        .cmp-table th { background: #1a1a1a; color: white; padding: 10px 12px; text-align: right; font-size: 11px; font-weight: 700; }
+        .cmp-table td { padding: 12px; border-bottom: 1px solid #f1f5f9; vertical-align: middle; }
+        .cmp-table tr:last-child td { border-bottom: none; }
+        .cmp-table tr:hover td { background: #f8fafc; }
+        .up { color: #16a34a; font-weight: 700; }
+        .down { color: #dc2626; font-weight: 700; }
+        .neutral { color: #64748b; font-weight: 600; }
+
+        /* BADGE */
+        .badge { display: inline-block; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 10px; }
+        .badge-green { background: #d1fae5; color: #065f46; }
+        .badge-yellow { background: #fef3c7; color: #92400e; }
+        .badge-red { background: #fee2e2; color: #991b1b; }
+        .badge-blue { background: #dbeafe; color: #1e40af; }
+        .badge-purple { background: #ede9fe; color: #6d28d9; }
+        .badge-gray { background: #f1f5f9; color: #475569; }
+
+        /* INSIGHT BOXES */
+        .insight-box { border-radius: 10px; padding: 20px; margin-bottom: 16px; border-right: 4px solid; }
+        .insight-box.critical { background: #fff5f5; border-color: #e53935; }
+        .insight-box.warning { background: #fffbeb; border-color: #f59e0b; }
+        .insight-box.success { background: #f0fdf4; border-color: #22c55e; }
+        .insight-box.info { background: #eff6ff; border-color: #2563eb; }
+        .insight-box.purple { background: #fdf4ff; border-color: #9333ea; }
+        .insight-box.national { background: linear-gradient(135deg, #f0fdf4, #dcfce7); border-color: #16a34a; }
+        .insight-title { font-size: 14px; font-weight: 700; margin-bottom: 8px; }
+        .critical .insight-title { color: #991b1b; }
+        .warning .insight-title { color: #92400e; }
+        .success .insight-title { color: #14532d; }
+        .info .insight-title { color: #1e40af; }
+        .purple .insight-title { color: #6b21a8; }
+        .national .insight-title { color: #14532d; }
+        .insight-text { font-size: 13px; line-height: 1.7; color: #475569; }
+        .action-list { margin-top: 10px; margin-right: 16px; }
+        .action-list li { font-size: 13px; color: #334155; margin-bottom: 4px; }
+
+        /* CITIES */
+        .city-row { display: flex; align-items: center; gap: 8px; padding: 10px 0; border-bottom: 1px solid #f1f5f9; flex-wrap: nowrap; }
+        .city-name { font-weight: 700; font-size: 13px; width: 80px; flex-shrink: 0; }
+        .city-bar-wrap { flex: 1; background: #f1f5f9; border-radius: 6px; height: 10px; overflow: hidden; min-width: 40px; }
+        .city-bar { height: 100%; border-radius: 6px; background: linear-gradient(90deg, #e53935, #b71c1c); }
+        .city-orders { font-size: 12px; color: #64748b; width: 54px; text-align: center; flex-shrink: 0; }
+        .city-value { font-size: 12px; font-weight: 700; color: #1a1a1a; width: 70px; text-align: left; flex-shrink: 0; }
+
+        /* NATIONAL DAY PLAN */
+        .nd-card { border-radius: 12px; padding: 18px; margin-bottom: 14px; border-right: 4px solid #16a34a; background: white; box-shadow: 0 1px 3px rgba(0,0,0,0.07); }
+        .nd-card-title { font-size: 14px; font-weight: 700; color: #14532d; margin-bottom: 8px; }
+        .nd-card-text { font-size: 13px; color: #334155; line-height: 1.8; }
+        .nd-timeline { display: flex; flex-direction: column; gap: 0; }
+        .nd-phase { display: flex; gap: 14px; padding: 16px 0; border-bottom: 1px solid #dcfce7; }
+        .nd-phase:last-child { border-bottom: none; }
+        .nd-phase-num { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg,#16a34a,#15803d); color: white; font-weight: 700; font-size: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .nd-phase-content { flex: 1; }
+        .nd-phase-title { font-size: 14px; font-weight: 700; color: #14532d; margin-bottom: 4px; }
+        .nd-phase-date { font-size: 11px; color: #16a34a; font-weight: 700; margin-bottom: 6px; }
+        .nd-phase-text { font-size: 12px; color: #475569; line-height: 1.7; }
+
+        @media (min-width: 600px) {
+            .header .brand { font-size: 48px; }
+            .header h1 { font-size: 20px; }
+            .metric-value { font-size: 28px; }
+            .section { padding: 28px 24px; }
+            .section-title { font-size: 20px; }
+            .city-name { width: 110px; font-size: 14px; }
+            .city-orders { width: 60px; font-size: 13px; }
+            .city-value { width: 80px; font-size: 13px; }
+        }
+    
+        :root { box-sizing: border-box; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+        html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+        .prod-row { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:12px; background:white; border-radius:8px; margin-bottom:8px; border-right:4px solid #94a3b8; }
+        .prod-row:last-child { margin-bottom:0; }
+        .prod-name { font-size:13px; font-weight:700; flex:1; min-width:0; }
+        .prod-tag { font-size:11px; color:#64748b; font-weight:400; }
+        .prod-qty { text-align:center; width:48px; flex-shrink:0; }
+        .prod-qty b { display:block; font-size:20px; font-weight:700; line-height:1.2; }
+        .prod-qty span, .prod-val span { font-size:10px; color:#64748b; }
+        .prod-val { text-align:left; width:96px; flex-shrink:0; }
+        .prod-val b { display:block; font-size:14px; font-weight:700; }
+        .fn-row { display:flex; align-items:center; gap:8px; padding:10px 0; border-bottom:1px solid #f1f5f9; }
+        .fn-row:last-child { border-bottom:none; }
+        .fn-name { font-weight:700; font-size:13px; width:120px; flex-shrink:0; }
+        .fn-count { font-size:14px; font-weight:700; width:56px; text-align:center; flex-shrink:0; }
+        .fn-rate { font-size:12px; color:#64748b; width:52px; text-align:left; flex-shrink:0; }
+        .fn-bar-leak { background: linear-gradient(90deg, #e53935, #b71c1c) !important; }
+        .fn-bar-ok { background: linear-gradient(90deg, #c2185b, #880e4f); }
+        .camp-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
+        @media (min-width: 600px) { .camp-grid { grid-template-columns:repeat(3,1fr); } .fn-name { width:150px; } }
+        @media (max-width: 599px) { .cmp-table { font-size:11px; } .cmp-table th, .cmp-table td { padding:8px 6px; white-space:nowrap; } .cmp-table td:first-child { white-space:normal; min-width:118px; } }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- HEADER -->
+    <div class="header">
+        <div class="brand">أزهار <span>بانسيه</span></div>
+        <h1>تقرير أداء الحملات والمتجر</h1>
+        <div class="accent-bar"></div>
+        <div class="platform-badge">📱 TikTok · 👻 Snapchat · 🔍 Google · 🏪 منصة زد</div>
+        <div class="date" style="margin-top:14px;">أكتوبر 2026</div>
+    </div>
+
+    <!-- SUMMARY -->
+    <div class="section" style="border-top: 4px solid #e53935;">
+        <h2 class="section-title" style="border-color:#e53935;">📌 الخلاصة: الإعلان يجلب الزيارات، والعائق داخل المتجر</h2>
+        <p style="font-size:13px;color:#475569;line-height:1.8;margin-bottom:18px;">تؤكد الأرقام أن الإعلانات تؤدي دورها في جلب زيارات مؤهلة بتكلفة منخفضة، بينما يتوقف أغلب الزوار داخل المتجر قبل إتمام الطلب؛ أي أن المشكلة لا تقتصر على الإعلانات، بل تشمل ما يراه العميل داخل المتجر.</p>
+        <div class="metrics-grid" style="margin-bottom:0;">
+            <div class="metric-card green"><div class="metric-label">تكلفة النقرة — تيك توك</div><div class="metric-value">0.33 ر.س</div><div class="metric-sub">4,286 نقرة في أكتوبر</div></div>
+            <div class="metric-card muted"><div class="metric-label">زيارات المتجر</div><div class="metric-value">5,840</div><div class="metric-sub">مقابل 10 طلبات فقط</div></div>
+            <div class="metric-card red"><div class="metric-label">من مشاهدة المنتج إلى الشراء</div><div class="metric-value">0.07%</div><div class="metric-sub">خارج الموسم، مقابل 2.0% في الموسم</div></div>
+            <div class="metric-card red"><div class="metric-label">نقرات بحث Google</div><div class="metric-value">1 من 415</div><div class="metric-sub">شراء واحد رغم النية الشرائية العالية</div></div>
+        </div>
+    </div>
+
+    <!-- WORK DONE -->
+    <div class="section" style="border-top: 4px solid #0891b2;">
+        <h2 class="section-title" style="border-color:#0891b2;">🛠️ ما تم إنجازه</h2>
+        <div class="nd-timeline">
+            <div class="nd-phase"><div class="nd-phase-num">1</div><div class="nd-phase-content"><div class="nd-phase-title">اختبارات حملة الشراء على تيك توك</div><div class="nd-phase-text">استمرار تشغيل مجموعات إعلانية بأهداف تحسين مختلفة (الشراء، وإضافة بيانات الدفع، وبدء الدفع)، واختبار شرائح الجمهور والفيديوهات الإعلانية وتوجيه الإنفاق نحو المجموعات الأعلى أداءً.</div></div></div>
+            <div class="nd-phase"><div class="nd-phase-num">2</div><div class="nd-phase-content"><div class="nd-phase-title">إطلاق حملة التحويل على سناب شات <span class="badge badge-gray">20 أكتوبر</span></div><div class="nd-phase-text">إطلاق أول حملة تحويل على سناب شات بعد ربط البيكسل بالمتجر، وجمع أولى إشارات الزيارات والإضافة إلى السلة.</div></div></div>
+            <div class="nd-phase"><div class="nd-phase-num">3</div><div class="nd-phase-content"><div class="nd-phase-title">حملات البحث على Google</div><div class="nd-phase-text">استهداف عمليات البحث ذات النية الشرائية المرتفعة المرتبطة بمحلات الورد والباقات.</div></div></div>
+            <div class="nd-phase"><div class="nd-phase-num">4</div><div class="nd-phase-content"><div class="nd-phase-title">مراجعة شاملة لتجربة الشراء في المتجر <span class="badge badge-gray">24 أكتوبر</span></div><div class="nd-phase-text">فحص رحلة العميل داخل المتجر من الصفحة الرئيسية حتى إتمام الطلب، ومقارنتها بأحداث البيكسل، لتحديد مراحل التوقف التي تحدّ من تحويل الزيارات إلى طلبات.</div></div></div>
+        </div>
+    </div>
+
+    <!-- ZID OVERVIEW -->
+    <div class="section" style="border-top: 4px solid #7c3aed;">
+        <h2 class="section-title" style="border-color:#7c3aed;">🏪 نتائج المتجر — منصة زد</h2>
+        <p style="font-size:13px;color:#64748b;margin-bottom:20px;">1 – 31 أكتوبر 2026 · تُعدّ أرقام زد المرجع الفعلي للمبيعات من جميع المصادر</p>
+
+        <div class="metrics-grid" style="margin-bottom:20px;">
+            <div class="metric-card green"><div class="metric-label">إجمالي المبيعات</div><div class="metric-value">1,994.9 ر.س</div><div class="metric-sub">سبتمبر: 8,335.6 ر.س</div></div>
+            <div class="metric-card dark"><div class="metric-label">عدد الطلبات</div><div class="metric-value">10 طلبات</div><div class="metric-sub">سبتمبر: 51 طلباً</div></div>
+            <div class="metric-card muted"><div class="metric-label">متوسط قيمة الطلب (AOV)</div><div class="metric-value">199.5 ر.س</div><div class="metric-sub">سبتمبر: 163.4 ر.س</div></div>
+            <div class="metric-card muted"><div class="metric-label">الزيارات</div><div class="metric-value">5,840</div><div class="metric-sub">زيارة للمتجر</div></div>
+            <div class="metric-card red"><div class="metric-label">معدل التحويل</div><div class="metric-value">0.17%</div><div class="metric-sub">10 طلبات ÷ 5,840 زيارة</div></div>
+            <div class="metric-card gold"><div class="metric-label">العائد من الإنفاق (ROAS)</div><div class="metric-value">0.86x</div><div class="metric-sub">1,994.9 ÷ 2,320 ر.س (جميع المنصات)</div></div>
+            <div class="metric-card muted"><div class="metric-label">تكلفة الطلب الفعلية</div><div class="metric-value">232.0 ر.س</div><div class="metric-sub">2,320 ÷ 10 طلبات</div></div>
+        </div>
+
+        <div class="insight-box warning" style="margin-bottom:0;">
+            <div class="insight-title">⚠️ المتجر يستقبل الزيارات ولا يحوّلها إلى طلبات خارج المواسم</div>
+            <div class="insight-text">حقق سبتمبر 51 طلباً بدعم موسم اليوم الوطني، بينما سجّل أكتوبر 10 طلبات من 5,840 زيارة، أي طلب واحد لكل 584 زيارة تقريباً. في المقابل ارتفع متوسط قيمة الطلب بنسبة 22% ليبلغ 199.5 ر.س.</div>
+        </div>
+    </div>
+
+    <!-- TOTAL SPEND -->
+    <div class="section" style="border-top: 4px solid #f57f17;">
+        <h2 class="section-title" style="border-color:#f57f17;">💳 إجمالي الإنفاق الإعلاني</h2>
+        <p style="font-size:13px;color:#64748b;margin-bottom:20px;">أكتوبر 2026 · جميع المنصات</p>
+
+        <div class="metrics-grid" style="margin-bottom:16px;">
+            <div class="metric-card tiktok"><div class="metric-label">تيك توك</div><div class="metric-value">1,426 ر.س</div></div>
+            <div class="metric-card muted"><div class="metric-label">سناب شات</div><div class="metric-value">245 ر.س</div><div class="metric-sub">65.43$</div></div>
+            <div class="metric-card blue"><div class="metric-label">Google</div><div class="metric-value">649 ر.س</div><div class="metric-sub">649.30 ر.س</div></div>
+            <div class="metric-card gold"><div class="metric-label">الإجمالي</div><div class="metric-value">2,320 ر.س</div></div>
+        </div>
+
+        <div class="insight-box info" style="margin-bottom:0;">
+            <div class="insight-title">📝 ملاحظة</div>
+            <div class="insight-text">باستبعاد رصيد الشهر السابق (376 ر.س) والكريديت الإعلاني المجاني (450 ر.س)، يبلغ الإنفاق من الرصيد المضاف خلال أكتوبر <strong>1,494 ر.س</strong> صافٍ (600 ر.س تيك توك + 245 ر.س سناب شات + 649 ر.س Google).</div>
+        </div>
+    </div>
+
+    <!-- TIKTOK ADS -->
+    <div class="section" style="border-top: 4px solid #000;">
+        <h2 class="section-title" style="border-color:#000;">📱 أداء تيك توك</h2>
+        <p style="font-size:13px;color:#64748b;margin-bottom:20px;">أكتوبر 2026</p>
+
+        <div class="metrics-grid" style="margin-bottom:16px;">
+            <div class="metric-card tiktok"><div class="metric-label">إجمالي الإنفاق</div><div class="metric-value">1,426 ر.س</div><div class="metric-sub">حملة الشراء</div></div>
+            <div class="metric-card dark"><div class="metric-label">عدد مرات الظهور</div><div class="metric-value">291,707</div><div class="metric-sub">CPM: 4.89 ر.س</div></div>
+            <div class="metric-card muted"><div class="metric-label">عدد النقرات</div><div class="metric-value">4,286</div><div class="metric-sub">CTR: 1.47% · CPC: 0.33 ر.س</div></div>
+            <div class="metric-card muted"><div class="metric-label">مشاهدات الصفحات</div><div class="metric-value">3,250</div><div class="metric-sub">Page Views (website)</div></div>
+            <div class="metric-card muted"><div class="metric-label">الإضافات إلى السلة</div><div class="metric-value">35</div><div class="metric-sub">Adds to Cart (website)</div></div>
+            <div class="metric-card muted"><div class="metric-label">بدء إتمام الطلب</div><div class="metric-value">14</div><div class="metric-sub">Checkouts Initiated</div></div>
+            <div class="metric-card muted"><div class="metric-label">المشتريات (البيكسل)</div><div class="metric-value">1</div><div class="metric-sub">زد: 10 طلبات من جميع المصادر</div></div>
+        </div>
+
+        <div class="insight-box info" style="margin-bottom:0;">
+            <div class="insight-title">💰 الرصيد الإعلاني</div>
+            <div class="insight-text">يتوزع إنفاق أكتوبر البالغ 1,426 ر.س على ثلاثة مصادر:</div>
+            <ul class="action-list">
+                <li><strong>376 ر.س</strong> رصيد متبقٍّ في الحساب الإعلاني من الشهر السابق.</li>
+                <li><strong>600 ر.س</strong> صافٍ أُضيفت إلى تيك توك خلال الشهر (690 ر.س شاملة الضريبة).</li>
+                <li><strong>450 ر.س</strong> الجزء المتبقي من الكريديت الإعلاني المجاني.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- SNAPCHAT -->
+    <div class="section" style="border-top: 4px solid #facc15;">
+        <h2 class="section-title" style="border-color:#facc15;">👻 أداء سناب شات</h2>
+        <p style="font-size:13px;color:#64748b;margin-bottom:20px;">حملة التحويل — ACQ | Conv | ABO | 20 Oct</p>
+
+        <div class="metrics-grid" style="margin-bottom:16px;">
+            <div class="metric-card dark"><div class="metric-label">إجمالي الإنفاق</div><div class="metric-value">65.43$</div><div class="metric-sub">≈ 245 ر.س</div></div>
+            <div class="metric-card muted"><div class="metric-label">عدد مرات الظهور</div><div class="metric-value">14,511</div><div class="metric-sub">eCPM: 4.51$</div></div>
+            <div class="metric-card muted"><div class="metric-label">عدد النقرات</div><div class="metric-value">187</div><div class="metric-sub">CTR: 1.29% · CPC: 0.35$</div></div>
+            <div class="metric-card muted"><div class="metric-label">مشاهدات المنتجات</div><div class="metric-value">530</div><div class="metric-sub">مشاهدات الصفحات: 324</div></div>
+            <div class="metric-card muted"><div class="metric-label">الإضافات إلى السلة</div><div class="metric-value">3</div><div class="metric-sub">بدء الدفع: 1</div></div>
+        </div>
+
+        <div class="insight-box critical" style="margin-bottom:0;">
+            <div class="insight-title">🔴 توقف الحملة بعد أيام من إطلاقها</div>
+            <div class="insight-text">رُفضت بطاقة الدفع المسجّلة على الحساب الإعلاني، فتوقفت الإعلانات قبل أن تجمع الخوارزمية البيانات الكافية لاستقرار الأداء.</div>
+        </div>
+    </div>
+
+    <!-- GOOGLE -->
+    <div class="section" style="border-top: 4px solid #2563eb;">
+        <h2 class="section-title" style="border-color:#2563eb;">🔍 Google — البحث وملف المحل</h2>
+        <div class="metrics-grid" style="margin-bottom:16px;">
+            <div class="metric-card dark"><div class="metric-label">إجمالي الإنفاق</div><div class="metric-value">649.30 ر.س</div><div class="metric-sub">CPC: 1.56 ر.س</div></div>
+            <div class="metric-card blue"><div class="metric-label">نقرات البحث</div><div class="metric-value">415</div><div class="metric-sub">زوار بنية شراء مرتفعة</div></div>
+            <div class="metric-card red"><div class="metric-label">المشتريات من البحث</div><div class="metric-value">1</div><div class="metric-sub">شراء واحد من 415 نقرة</div></div>
+            <div class="metric-card muted"><div class="metric-label">طلبات الاتجاهات</div><div class="metric-value">61</div><div class="metric-sub">من ملف المحل على Google</div></div>
+            <div class="metric-card muted"><div class="metric-label">المكالمات</div><div class="metric-value">26</div><div class="metric-sub">من ملف المحل على Google</div></div>
+        </div>
+        <div class="insight-box info" style="margin-bottom:0;">
+            <div class="insight-title">💡 العميل يفضّل التواصل المباشر وزيارة المحل</div>
+            <div class="insight-text">يصل زوار البحث وهم يبحثون عن «محل ورد» و«باقة ورد»، ومع ذلك تحوّلت 415 نقرة إلى شراء واحد فقط، بينما سجّل ملف المحل 61 طلب اتجاهات و26 مكالمة؛ ما يعني أن العميل لا يجد في الموقع ما يكفي لإتمام الطلب أونلاين.</div>
+        </div>
+    </div>
+
+    <!-- FUNNEL -->
+    <div class="section" style="border-top: 4px solid #c2185b;">
+        <h2 class="section-title" style="border-color:#c2185b;">🔻 مسار الشراء على الموقع</h2>
+        <p style="font-size:13px;color:#64748b;margin-bottom:16px;">أحداث حملات تيك توك في أكتوبر كما رصدها البيكسل — الشريط يوضح نسبة الانتقال من المرحلة السابقة</p>
+        <div style="padding:16px;background:#f8fafc;border-radius:10px;">
+            <div class="fn-row"><div class="fn-name">مشاهدات الصفحات</div><div class="city-bar-wrap"><div class="city-bar fn-bar-ok" style="width:100%;"></div></div><div class="fn-count">3,250</div><div class="fn-rate">—</div></div>
+            <div class="fn-row"><div class="fn-name">مشاهدات المنتجات</div><div class="city-bar-wrap"><div class="city-bar fn-bar-ok" style="width:45.5%;"></div></div><div class="fn-count">1,480</div><div class="fn-rate">45.5%</div></div>
+            <div class="fn-row"><div class="fn-name" style="color:#991b1b;">الإضافة إلى السلة</div><div class="city-bar-wrap"><div class="city-bar fn-bar-leak" style="width:2.4%;"></div></div><div class="fn-count" style="color:#991b1b;">35</div><div class="fn-rate" style="color:#991b1b;font-weight:700;">2.4%</div></div>
+            <div class="fn-row"><div class="fn-name">بدء إتمام الطلب</div><div class="city-bar-wrap"><div class="city-bar fn-bar-ok" style="width:40%;"></div></div><div class="fn-count">14</div><div class="fn-rate">40.0%</div></div>
+            <div class="fn-row"><div class="fn-name" style="color:#991b1b;">الشراء (بيكسل تيك توك)</div><div class="city-bar-wrap"><div class="city-bar fn-bar-leak" style="width:7.1%;"></div></div><div class="fn-count" style="color:#991b1b;">1</div><div class="fn-rate" style="color:#991b1b;font-weight:700;">7.1%</div></div>
+            <div class="fn-row"><div class="fn-name" style="color:#14532d;">الطلبات الفعلية (زد)</div><div class="city-bar-wrap" style="background:transparent;"></div><div class="fn-count" style="color:#15803d;">10</div><div class="fn-rate">جميع المصادر</div></div>
+        </div>
+
+        <div style="font-size:15px;font-weight:700;margin:20px 0 12px;">📉 الموسم مقابل خارج الموسم</div>
+        <div style="overflow-x:auto;">
+        <table class="cmp-table">
+            <tr><th>معدل الانتقال</th><th>موسم اليوم الوطني</th><th>خارج الموسم</th></tr>
+            <tr><td>مشاهدة المنتج ← الإضافة إلى السلة</td><td class="up">16.2%</td><td class="down">2.4%</td></tr>
+            <tr><td>الإضافة إلى السلة ← بدء الدفع</td><td class="up">70.4%</td><td class="down">40.0%</td></tr>
+            <tr><td>بدء الدفع ← الشراء</td><td class="up">17.3%</td><td class="down">7.1%</td></tr>
+            <tr><td><strong>مشاهدة المنتج ← الشراء</strong></td><td class="up">2.0%</td><td class="down">0.07%</td></tr>
+        </table>
+        </div>
+        <p style="font-size:12px;color:#64748b;margin-top:10px;line-height:1.7;">الإعلان نفسه ما زال يجلب نقرات بتكلفة منخفضة، بينما يتراجع التحويل خارج الموسم بنحو 30 ضعفاً؛ أي أن العائق الرئيسي يقع داخل المتجر لا في الإعلان.</p>
+    </div>
+
+    <!-- PROBLEMS -->
+    <div class="section" style="border-top: 4px solid #e53935;">
+        <h2 class="section-title" style="border-color:#e53935;">⚠️ المشاكل والملاحظات</h2>
+        <p style="font-size:13px;color:#64748b;margin-bottom:16px;">نتائج مراجعة تجربة الشراء في المتجر بتاريخ 24 أكتوبر</p>
+
+        <div class="insight-box critical">
+            <div class="insight-title">🔴 مشاكل داخل المتجر</div>
+            <ul class="action-list" style="margin-top:0;">
+                <li><strong>الانطباع الأول:</strong> لا تعرض الواجهة الرئيسية للزائر القادم من الإعلان منتجاً أو سبباً للشراء أونلاين، وما زالت أقسام مناسبات منتهية ظاهرة.</li>
+                <li><strong>صفحة المنتج:</strong> ضعف عناصر الإقناع والثقة، وهي المرحلة التي يتوقف عندها أغلب الزوار خارج الموسم.</li>
+                <li><strong>الإضافة إلى السلة:</strong> مرحلة اختيار الموعد والتوصيل هي أكبر نقطة احتكاك قبل السلة، مع تضارب في معلومات مناطق التوصيل بين صفحات المتجر.</li>
+                <li><strong>إتمام الطلب:</strong> خطوات إضافية قبل الدفع، ورسوم توصيل لا تظهر للعميل إلا في مرحلة متأخرة.</li>
+                <li><strong>التواصل:</strong> أزرار واتساب في الموقع لا توصل العميل إلى محادثة المتجر.</li>
+            </ul>
+        </div>
+
+        <div class="insight-box warning" style="margin-bottom:0;">
+            <div class="insight-title">⚠️ عوائق على مستوى الحسابات الإعلانية</div>
+            <ul class="action-list" style="margin-top:0;">
+                <li><strong>سناب شات:</strong> بطاقة الدفع مرفوضة والإعلانات متوقفة.</li>
+                <li><strong>Google Ads:</strong> التحقق من المعلِن غير مكتمل، وعدم إكماله يوقف الإعلانات. كما أن قياس المشتريات من البحث لا يعمل بشكل صحيح.</li>
+                <li><strong>إنستغرام:</strong> لم يتسنَّ إطلاق أي حملة حتى الآن، لعدم اكتمال ربط الحساب بصفحة فيسبوك وعدم وجود بيكسل Meta على المتجر.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div style="text-align:center;padding:20px;color:#94a3b8;font-size:12px;">
+        تقرير أداء — أزهار بانسيه | أكتوبر 2026 · تم الإعداد بتاريخ 1 نوفمبر 2026
+    </div>
+
+</div>
+</body>
+</html>
